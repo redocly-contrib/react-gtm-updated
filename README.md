@@ -1,8 +1,6 @@
-[![Build Status](https://img.shields.io/travis/alinemorelli/react-gtm/master.svg?style=flat-square)](https://travis-ci.org/alinemorelli/react-gtm)
-[![npm version](https://img.shields.io/npm/v/react-gtm-module.svg?style=flat-square)](https://www.npmjs.com/package/react-gtm-module)
-[![npm downloads](https://img.shields.io/npm/dm/react-gtm-module.svg?style=flat-square)](https://www.npmjs.com/package/react-gtm-module)
+[![GitHub Actions]](https://github.com/mosesokemwa/react-gtm-updated/actions/workflows/ci.yaml/badge.svg)
 
-# react-gtm-module
+# hHighly updated version of react-gtm-module
 ### React Google Tag Manager Module
 
 This is a Javascript module to [React](https://facebook.github.io/react/) based apps that implement Google Tag Manager. It is designed to use [GTM](https://developers.google.com/tag-manager/quickstart) snippet.
