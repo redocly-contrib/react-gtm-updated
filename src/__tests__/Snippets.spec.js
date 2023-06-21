@@ -8,11 +8,11 @@ describe('Snippets', () => {
     args = { id: 'GTM-abc123', dataLayerName: 'dataLayer', events: {} }
     snippets = Snippets.tags(args)
   })
-  
+
   it('should use the `id` for the iframe', () => {
     expect(snippets.iframe).toContain(`id=${args.id}`, 1)
   })
-  
+
   it('should use the `gtm_auth` and `gtm_preview` for the iframe', () => {
     Object.assign(args, {
       auth: '6sBOnZx1hqPcO01xPOytLK',
@@ -27,7 +27,6 @@ describe('Snippets', () => {
     args = { dataLayer: { name: 'test' } }
     const dataLayerName = 'dataLayer'
     snippets = Snippets.dataLayer(args, dataLayerName)
-    console.log(snippets)
     expect(snippets).toContain('{"name":"test"}')
   })
 

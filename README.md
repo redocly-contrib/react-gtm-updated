@@ -134,6 +134,33 @@ export default Home
 
 ```
 
+### Adding properties to GTM script and noscript tags
+
+You can also add attributes to your script and noscript tags,
+if you need to do so for accessibility or security.
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Router from 'react-router'
+import routes from './routes'
+
+...
+import TagManager from 'react-gtm-module'
+
+const tagManagerArgs = {
+    gtmId: 'GTM-000000',
+    scriptProps: { nonce: 'abcdef' },
+    noscriptProps: { 'aria-hidden': 'true' }
+}
+
+TagManager.initialize(tagManagerArgs)
+...
+
+const app = document.getElementById('app')
+ReactDOM.render(<Router routes={routes} />, app)
+
+```
 
 ## Events
 
@@ -198,15 +225,16 @@ Look for gtm_auth and gtm_preview
 
 
 |Value|Type|Required|Notes|
-|------|-----|-----|-----|
-|gtmId| `String`| Yes | GTM id, must be something like `GTM-000000`.|
-|dataLayer| `Object`| No | Object that contains all of the information that you want to pass to Google Tag Manager.|
-|dataLayerName| `String`| No | Custom name for dataLayer object.|
-|events| `Object`| No | Additional events such as 'gtm.start': new Date().getTime(),event:'gtm.js'.|
-|auth| `String` | No | used to set environments. |
-|preview| `String` | No | used to set environments, something like `env-00`. |
-|nonce| `String` | No | used to add a [nonce](https://developers.google.com/tag-manager/web/csp) |
-
+|--------------|----------|-----|------------------------------------------------------------------------------------------|
+|gtmId         | `String` | Yes | GTM id, must be something like `GTM-000000`.                                             |
+|dataLayer     | `Object` | No  | Object that contains all of the information that you want to pass to Google Tag Manager. |
+|dataLayerName | `String` | No  | Custom name for dataLayer object.                                                        |
+|events        | `Object` | No  | Additional events such as 'gtm.start': new Date().getTime(),event:'gtm.js'.              |
+|auth          | `String` | No  | used to set environments.                                                                |
+|preview       | `String` | No  | used to set environments, something like `env-00`.                                       |
+|scriptProps   | `Object` | No  | used to add additional props to the script tag                                           |
+|noScriptProps | `Object` | No  | used to add additional props to the noscript tag                                         |
+|gtmSrc        | `String` | No  | used to add custom src script tag, default is "https://www.googletagmanager.com").       |
 
 ### Note:
 

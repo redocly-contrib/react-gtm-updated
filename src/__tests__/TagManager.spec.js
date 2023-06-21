@@ -2,7 +2,7 @@ import TagManager from '../TagManager'
 
 describe('TagManager', () => {
   it('should render tagmanager', () => {
-    TagManager.initialize({gtmId: 'GTM-000000'})
+    TagManager.initialize({ gtmId: 'GTM-000000' })
     expect(window.dataLayer).toHaveLength(1)
   })
 
@@ -17,15 +17,21 @@ describe('TagManager', () => {
     expect(window.dataLayer).toHaveLength(1)
   })
 
-  it('should render tagmanager with nonce', () => {
-    TagManager.initialize({gtmId: 'GTM-000000', nonce: 'foo'})
-    const scripts = window.document.getElementsByTagName('script');
-    expect(scripts[0].nonce).toBe('foo');
-  })
-
-  it('should render tagmanager without nonce', () => {
-    TagManager.initialize({gtmId: 'GTM-000000'})
-    const scripts = window.document.getElementsByTagName('script');
-    expect(scripts[0].nonce).toBe('');
- })
+  it("should render script and noscript props when provided", () => {
+    TagManager.initialize({
+      gtmId: "GTM-000000",
+      scriptProps: { "data-foo": "bar", nonce: 'foo' },
+      noscriptProps: { "data-foo": "baz" }
+    });
+    expect(window.dataLayer).toHaveLength(1);
+    expect(
+      window.document.querySelector('script[data-foo="bar"]')
+    ).toBeDefined();
+    expect(
+      window.document.querySelector('noscript[data-foo="baz"]')
+    ).toBeDefined();
+    expect(
+      window.document.querySelector('script[nonce="foo"]')
+    ).toBeDefined();
+  });
 })

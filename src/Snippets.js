@@ -8,7 +8,9 @@ const Snippets = {
     const gtm_preview = preview ? `&gtm_preview=${preview}` : ''
     const gtm_src = src
 
-    if (!id) warn('GTM Id is required')
+    if (!id){
+      warn('GTM Id is required')
+    }
 
     const iframe = `
       <iframe src="${gtm_src}/ns.html?id=${id}${gtm_auth}${gtm_preview}&gtm_cookies_win=x"
