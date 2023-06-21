@@ -191,7 +191,7 @@ TagManager.initialize(tagManagerArgs)
 Go to Google Tag Manager -> ADMIN -> Environments -> Actions -> Get Snippet.
 Look for gtm_auth and gtm_preview
 
-##### Don't know to use GTM environments? 
+##### Don't know to use GTM environments?
    - https://support.google.com/tagmanager/answer/6311518
    - https://www.simoahava.com/analytics/better-qa-with-google-tag-manager-environments/
 
@@ -205,6 +205,7 @@ Look for gtm_auth and gtm_preview
 |events| `Object`| No | Additional events such as 'gtm.start': new Date().getTime(),event:'gtm.js'.|
 |auth| `String` | No | used to set environments. |
 |preview| `String` | No | used to set environments, something like `env-00`. |
+|nonce| `String` | No | used to add a [nonce](https://developers.google.com/tag-manager/web/csp) |
 
 
 ### Note:
