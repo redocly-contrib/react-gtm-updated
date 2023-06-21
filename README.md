@@ -164,7 +164,7 @@ ReactDOM.render(<Router routes={routes} />, app)
 
 ## Events
 
-### Example:
+### Example using `TagManager.initialize()`:
 
 ```js
 import React from 'react'
@@ -193,7 +193,7 @@ ReactDOM.render(<Router routes={routes} />, app)
 
 Configure how Tag Manager will works between development and production server environments.
 
-### Example:
+### Example using `TagManager.initialize()`:
 
 ```js
 import React from 'react'
@@ -213,6 +213,38 @@ const tagManagerArgs = {
 TagManager.initialize(tagManagerArgs)
 
 ```
+
+### Example using `TagManager.dataLayer()`
+
+You can also push events using `TagManager.dataLayer()` at any moment after initialization:
+
+```js
+import React from 'react'
+
+...
+import TagManager from 'react-gtm-module'
+
+const Home = () => {
+    ...
+    TagManager.dataLayer({
+        dataLayer: {
+          'event': 'eventName',
+          //other
+        }
+    })
+    ...
+
+    return (
+        <div className='home'>
+            //your component code
+        </div>
+    )
+}
+
+export default Home
+
+```
+
 
 ##### How can I find auth and preview?
 Go to Google Tag Manager -> ADMIN -> Environments -> Actions -> Get Snippet.
