@@ -19,6 +19,14 @@ const Snippets = {
         w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', ${JSON.stringify(events).slice(1, -1)}});
         var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
         j.async=true;j.src='${gtm_src}/gtm.js?id='+i+dl+'${gtm_auth}${gtm_preview}&gtm_cookies_win=x';
+        j.addEventListener('error', function() {
+          var _ge = new CustomEvent('gtm_loading_error', { bubbles: true });
+          d.dispatchEvent(_ge);
+        });
+        j.addEventListener('load', function() {
+            var _ge = new CustomEvent('gtm_loaded', { bubbles: true });
+            d.dispatchEvent(_ge);
+        });
         f.parentNode.insertBefore(j,f);
       })(window,document,'script','${dataLayerName}','${id}');`
 
@@ -37,4 +45,4 @@ const Snippets = {
   }
 }
 
-module.exports = Snippets
+module.exports = Snippets;
