@@ -3,10 +3,15 @@ import warn from './utils/warn'
 // https://developers.google.com/tag-manager/quickstart
 
 const Snippets = {
-  tags: function ({ id, src, events, dataLayer, dataLayerName, preview, auth }) {
+  tags: function ({ id, src, events, dataLayer, dataLayerName, preview, auth, noScriptProps, scriptProps }) {
     const gtm_auth = auth ? `&gtm_auth=${auth}` : ''
     const gtm_preview = preview ? `&gtm_preview=${preview}` : ''
     const gtm_src = src
+    const scriptNonce = scriptProps.nonce ? ` nonce="${scriptProps.nonce}"` : ''
+    const noScriptNonce = noScriptProps.nonce ? ` nonce="${noScriptProps.nonce}"` : ''
+
+    const nonceLine = noScriptNonce || scriptNonce ? `j.setAttribute('nonce','${noScriptNonce || scriptNonce}');` : '';
+
 
     if (!id){
       warn('GTM Id is required')
@@ -29,7 +34,7 @@ const Snippets = {
             var _ge = new CustomEvent('gtm_loaded', { bubbles: true });
             d.dispatchEvent(_ge);
         });
-        f.parentNode.insertBefore(j,f);
+        ${nonceLine}f.parentNode.insertBefore(j,f);
       })(window,document,'script','${dataLayerName}','${id}');`
 
     const dataLayerVar = this.dataLayer(dataLayer, dataLayerName)
