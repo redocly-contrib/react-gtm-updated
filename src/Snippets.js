@@ -4,8 +4,8 @@ import warn from './utils/warn'
 
 const Snippets = {
   tags: function ({ id, src, events, dataLayer, dataLayerName, preview, auth }) {
-    const gtm_auth = `&gtm_auth=${auth}`
-    const gtm_preview = `&gtm_preview=${preview}`
+    const gtm_auth = auth ? `&gtm_auth=${auth}` : ''
+    const gtm_preview = preview ? `&gtm_preview=${preview}` : ''
     const gtm_src = src
 
     if (!id) warn('GTM Id is required')
