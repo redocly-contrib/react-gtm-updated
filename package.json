@@ -8,7 +8,8 @@
     "jest": "jest",
     "test": "npm run lint && npm run jest",
     "build": "babel src -d dist --ignore src/__tests__",
-    "prepublish": "npm install && npm run build"
+    "prepare": "npm install",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
