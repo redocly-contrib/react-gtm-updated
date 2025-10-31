@@ -10,7 +10,7 @@ const Snippets = {
     const scriptNonce = scriptProps.nonce ? ` nonce="${scriptProps.nonce}"` : ''
     const noScriptNonce = noScriptProps.nonce ? ` nonce="${noScriptProps.nonce}"` : ''
 
-    const nonceLine = noScriptNonce || scriptNonce ? `j.setAttribute('nonce','${scriptProps?.nonce || noScriptProps?.nonce}');` : '';
+    const nonceLine = noScriptNonce || scriptNonce ? `j.setAttribute('nonce','${scriptProps.nonce || noScriptProps.nonce}');` : '';
 
 
     if (!id){
