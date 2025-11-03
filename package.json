@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alinemorelli/react-gtm"
+    "url": "git@github.com:redocly-contrib/react-gtm-updated.git"
   },
   "author": {
     "name": "Aline Morelli",
